@@ -1,0 +1,127 @@
+Feb 24, 2025 4:59:05 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam Management System =====
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam Management System =====
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 1. Add Exam
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 2. Update Exam
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 3. Delete Exam
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 4. View Exam by ID
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 5. View All Exams
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 6. Exit
+Feb 24, 2025 5:19:34 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Choose an option: 
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam List =====
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: ExamID  ExamName  ExamDateTime
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 📌 [3390d54f-8d6a-401c-a67d-6c8c54d8389d] winter-2022 - 2025-01-01T12:40
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam Management System =====
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 1. Add Exam
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 2. Update Exam
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 3. Delete Exam
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 4. View Exam by ID
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 5. View All Exams
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 6. Exit
+Feb 24, 2025 5:20:11 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Choose an option: 
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam Management System =====
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 1. Add Exam
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 2. Update Exam
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 3. Delete Exam
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 4. View Exam by ID
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 5. View All Exams
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 6. Exit
+Feb 24, 2025 5:21:02 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Choose an option: 
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam List =====
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: ExamID  ExamName  ExamDateTime
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 📌 [d84ed3f8-b331-4a4d-9bd8-63e20eda1011] winter-2022 - 2025-01-01T12:40
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam Management System =====
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 1. Add Exam
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 2. Update Exam
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 3. Delete Exam
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 4. View Exam by ID
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 5. View All Exams
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 6. Exit
+Feb 24, 2025 5:21:08 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Choose an option: 
+Feb 24, 2025 5:21:19 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Enter Exam ID to view: 
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam Details =====
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Exam ID: d84ed3f8-b331-4a4d-9bd8-63e20eda1011
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Name: winter-2022
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Date & Time: 2025-01-01T12:40
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Duration: 120 minutes
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Total Marks: 70
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Passing Marks: 23
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Department: computer
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Semester: 4
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Subject: digital forensics
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 
+===== Exam Management System =====
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 1. Add Exam
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 2. Update Exam
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 3. Delete Exam
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 4. View Exam by ID
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 5. View All Exams
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: 6. Exit
+Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
+INFO: Choose an option: 
+Feb 24, 2025 5:27:06 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Exam with ID 332 not found.
