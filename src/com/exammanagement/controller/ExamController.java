@@ -14,20 +14,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ExamController {
- private final ExamService examService=new ExamServiceImpl();
-    private static final String DATE_AND_TIME_FORMAT="yyyy-MM-dd HH:mm";
+    private final ExamService examService = new ExamServiceImpl();
 
-   public ExamController(){
-        //temp value added
+    public ExamController() {
         Department department1 = new Department("computer");
-        Subject subject1 = new Subject("digital forensics",department1,8);
+        Subject subject1 = new Subject("digital forensics", department1, 8);
         String tempDateTime = "2025-01-01 12:40";
-        DateTimeFormatter tempFormatter = DateTimeFormatter.ofPattern(DATE_AND_TIME_FORMAT);
-        LocalDateTime tempDateTime1 = LocalDateTime.parse(tempDateTime, tempFormatter);
-        Exam exam1 = new Exam("winter-2022",tempDateTime1,120,70,23,department1,4,subject1);
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime tempDateTime1 = LocalDateTime.parse(tempDateTime, formatter);
+        Exam exam1 = new Exam("winter-2022", tempDateTime1, 120, 70, 23, department1, 4, subject1);
         examService.addExam(exam1);
     }
+
     public void showMenu() {
         while (true) {
             System.out.println("\n===== Exam Management System =====");
@@ -37,9 +35,9 @@ public class ExamController {
             System.out.println("4. View Exam by ID");
             System.out.println("5. View All Exams");
             System.out.println("6. Exit");
-            System.out.println("Choose an option: ");
+            System.out.print("Choose an option: ");
 
-            int choice = InputUtil.readInt();
+            int choice = InputUtil.readInt("");
             switch (choice) {
                 case 1 -> addExam();
                 case 2 -> updateExam();
@@ -47,7 +45,7 @@ public class ExamController {
                 case 4 -> viewExamById();
                 case 5 -> viewAllExams();
                 case 6 -> {
-                    LoggerUtil.logInfo("Exiting Exam Management System...");
+                    LoggerUtil.logWarning("Exiting Exam Management System...");
                     return;
                 }
                 default -> LoggerUtil.logError("Invalid option. Please try again");
@@ -58,20 +56,19 @@ public class ExamController {
     private void viewAllExams() {
         List<Exam> exams = examService.getAllExams();
         if (exams.isEmpty()) {
-           LoggerUtil.logError("❌ No exams available.");
+            LoggerUtil.logError("No exams available.");
             return;
         }
 
         System.out.println("\n===== Exam List =====");
         System.out.println("ExamID  ExamName  ExamDateTime");
         for (Exam exam : exams) {
-            System.out.println("📌 [" + exam.getExamId() + "] " + exam.getExamName() + " - " + exam.getDateTime());
+            System.out.println("[" + exam.getExamId() + "] " + exam.getExamName() + " - " + exam.getDateTime());
         }
     }
 
     private void viewExamById() {
-        System.out.println("Enter Exam ID to view: ");
-        String examId = InputUtil.readString();
+        String examId = InputUtil.readString("Enter Exam ID to view: ");
 
         try {
             Exam exam = examService.findExamById(examId);
@@ -87,111 +84,84 @@ public class ExamController {
             System.out.println("Subject: " + exam.getSubject().getSubjectName());
 
         } catch (ExamNotFoundException e) {
-            LoggerUtil.logError("❌ " + e.getMessage());
+            LoggerUtil.logError(e.getMessage());
         }
     }
 
     private void deleteExam() {
-        System.out.println("Enter Exam ID to delete: ");
-        String examId = InputUtil.readString();
+        String examId = InputUtil.readString("Enter Exam ID to delete: ");
 
         if (examService.deleteExam(examId)) {
-            System.out.println("✅ Exam deleted successfully!");
+            System.out.println("Exam deleted successfully!");
         } else {
-            LoggerUtil.logError("❌ Exam not found.");
+            LoggerUtil.logError("Exam not found.");
         }
     }
 
     private void updateExam() {
-        System.out.println("Enter Exam ID to update: ");
-        String examId = InputUtil.readString();
+        String examId = InputUtil.readString("Enter Exam ID to update: ");
 
         try {
             Exam existingExam = examService.findExamById(examId);
-            Subject existingSubject=existingExam.getSubject();
-            Department existingdepartment=existingExam.getDepartment();
+            Subject existingSubject = existingExam.getSubject();
+            Department existingdepartment = existingExam.getDepartment();
 
-            System.out.println("Enter New Exam Name (" + existingExam.getExamName() + "): ");
-            String examName = InputUtil.readString();
+            String examName = InputUtil.readString("Enter New Exam Name", existingExam.getExamName());
             if (!examName.isEmpty()) existingExam.setExamName(examName);
 
-            System.out.println("Enter New department (" + existingdepartment.getDepartmentName() + "): ");
-            String examDepartment = InputUtil.readString();
-            if (!examDepartment.isEmpty()) {
-                existingdepartment.setDepartmentName(examDepartment);
-            }
+            String examDepartment = InputUtil.readString("Enter New department", existingdepartment.getDepartmentName());
+            if (!examDepartment.isEmpty()) existingdepartment.setDepartmentName(examDepartment);
 
-            System.out.println("Enter New semester (" + existingSubject.getSemester() + "): ");
-            int subjectSemester = InputUtil.readInt();
-            if (subjectSemester>0) {
+            int subjectSemester = InputUtil.readInt("Enter New semester", existingExam.getSemester());
+            if (subjectSemester > 0) {
                 existingExam.setSemester(subjectSemester);
                 existingSubject.setSemester(subjectSemester);
             }
 
-            System.out.println("Enter New Subject Name (" + existingSubject.getSubjectName() + "): ");
-            String subjectName = InputUtil.readString();
+            String subjectName = InputUtil.readString("Enter New Subject Name", existingSubject.getSubjectName());
             if (!subjectName.isEmpty()) existingSubject.setSubjectName(subjectName);
 
-            System.out.println("Enter New Total Marks (" + existingExam.getTotalMarks() + "): ");
-            int totalMarks = InputUtil.readInt();
+            int totalMarks = InputUtil.readInt("Enter New Total Marks", existingExam.getTotalMarks());
             if (totalMarks > 0) existingExam.setTotalMarks(totalMarks);
 
-            System.out.println("Enter New Passing Marks (" + existingExam.getPassingMarks() + "): ");
-            int passingMarks = InputUtil.readInt();
+            int passingMarks = InputUtil.readInt("Enter New Passing Marks", existingExam.getPassingMarks());
             if (passingMarks > 0) existingExam.setPassingMarks(passingMarks);
 
-            System.out.println("Enter New Exam DateTime (YYYY-MM-DD HH:MM) [" + existingExam.getDateTime() + "]: ");
-            String newDateTime = InputUtil.readString();
-            if (!newDateTime.isEmpty()) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_AND_TIME_FORMAT);
-                existingExam.setDateTime(LocalDateTime.parse(newDateTime,formatter));
-            }
+            LocalDateTime newDateTime = InputUtil.readDateAndTime("Enter New Exam DateTime (YYYY-MM-DD HH:MM)", existingExam.getDateTime().toString());
+            existingExam.setDateTime(newDateTime);
 
-            System.out.println("Enter New Duration (" + existingExam.getDuration() + " minutes): ");
-            int duration = InputUtil.readInt();
+            int duration = InputUtil.readInt("Enter New Duration", existingExam.getDuration());
             if (duration > 0) existingExam.setDuration(duration);
 
             examService.updateExam(examId, existingExam);
-            System.out.println("✅ Exam updated successfully!");
+            System.out.println("Exam updated successfully!");
 
         } catch (ExamNotFoundException e) {
-            LoggerUtil.logError("❌ " + e.getMessage());
+            LoggerUtil.logError(e.getMessage());
         }
     }
 
-    private void addExam(){
+    private void addExam() {
 
-        System.out.println("Enter Exam Name: ");
-        String examName = InputUtil.readString();
+        String examName = InputUtil.readString("Enter Exam Name: ");
+        String departmentName = InputUtil.readString("Enter Department Name: ");
 
-        System.out.println("Enter Department Name: ");
-        String departmentName = InputUtil.readString();
         Department department = new Department(departmentName);
 
-        System.out.println("Enter Semester: ");
-        int semester = InputUtil.readInt();
+        int semester = InputUtil.readInt("Enter Semester: ");
+        String subjectName = InputUtil.readString("Enter Subject Name: ");
 
-        System.out.println("Enter Subject Name: ");
-        String subjectName = InputUtil.readString();
-        Subject subject = new Subject(subjectName,department,semester);
+        Subject subject = new Subject(subjectName, department, semester);
 
-        System.out.println("Enter Total Marks: ");
-        int totalMarks = InputUtil.readInt();
+        int totalMarks = InputUtil.readInt("Enter Total Marks: ");
+        int passingMarks = InputUtil.readInt("Enter Passing Marks: ");
 
-        System.out.println("Enter Passing Marks: ");
-        int passingMarks = InputUtil.readInt();
+        LocalDateTime dateTime = InputUtil.readDateAndTime("Enter Exam DateTime (YYYY-MM-DD HH:MM): ");
+        int duration = InputUtil.readInt("Enter Duration (minutes): ");
 
-        System.out.println("Enter Exam DateTime (YYYY-MM-DD HH:MM): ");
-        String  tempDateTime = InputUtil.readString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_AND_TIME_FORMAT);
-        LocalDateTime dateTime = LocalDateTime.parse(tempDateTime, formatter);
-
-        System.out.println("Enter Duration (minutes): ");
-        int duration = InputUtil.readInt();
-
-        Exam exam = new Exam(examName,dateTime,duration,totalMarks,passingMarks,department,semester,subject);
+        Exam exam = new Exam(examName, dateTime, duration, totalMarks, passingMarks, department, semester, subject);
         examService.addExam(exam);
 
-        System.out.println("✅ Exam added successfully!");
+        System.out.println("Exam added successfully!");
     }
 }

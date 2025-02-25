@@ -125,3 +125,55 @@ Feb 24, 2025 5:21:21 PM com.exammanagement.utility.LoggerUtil logInfo
 INFO: Choose an option: 
 Feb 24, 2025 5:27:06 PM com.exammanagement.utility.LoggerUtil logError
 SEVERE: ❌ Exam with ID 332 not found.
+Feb 25, 2025 11:05:04 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Exam with ID this.examId = UUID.randomUUID().toString(); not found.
+Feb 25, 2025 11:05:47 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:05:50 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:05:52 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:11:21 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:11:31 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:13:45 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:13:52 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid option. Please try again
+Feb 25, 2025 11:14:13 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:40:38 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Exam with ID 3 not found.
+Feb 25, 2025 11:57:09 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Exam with ID System.out.println("❌ Invalid month! Must be between 1-12."); not found.
+Feb 25, 2025 11:57:09 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 11:57:15 AM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 12:09:25 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a valid name: 
+Feb 25, 2025 12:09:31 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a valid name: 
+Feb 25, 2025 12:22:10 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a valid name: 
+Feb 25, 2025 2:29:49 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Invalid input. Please enter a number: 
+Feb 25, 2025 2:44:06 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid option. Please try again
+Feb 25, 2025 2:44:15 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid input. Please enter a number: 
+Feb 25, 2025 2:44:15 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid input. Please enter a number: 
+Feb 25, 2025 3:36:18 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: ❌ Exam not found.
+Feb 25, 2025 3:52:38 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Exam with ID 2 not found.
+Feb 25, 2025 3:53:34 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Exam with ID k not found.
+Feb 25, 2025 3:53:38 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid input. Please enter a number: 
+Feb 25, 2025 3:53:41 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid option. Please try again
+Feb 25, 2025 5:46:38 PM com.exammanagement.utility.LoggerUtil logWarning
+WARNING: Exiting Exam Management System...

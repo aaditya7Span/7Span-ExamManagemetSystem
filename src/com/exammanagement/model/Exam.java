@@ -2,6 +2,7 @@ package com.exammanagement.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public class Exam {
     private final String examId;
@@ -10,9 +11,9 @@ public class Exam {
     private int duration;
     private int totalMarks;
     private int passingMarks;
-    private  Department department;
-    private  int semester;
-    private  Subject subject;
+    private Department department;
+    private int semester;
+    private Subject subject;
 
     public Exam(String examName, LocalDateTime dateTime, int duration, int totalMarks, int passingMarks, Department department, int semester, Subject subject) {
         this.examId = UUID.randomUUID().toString();

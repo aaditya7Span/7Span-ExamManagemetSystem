@@ -8,9 +8,6 @@ out/
 .classpath
 .factorypath
 .project
-src/com.exammanagement/model/Department.java
-src/com.exammanagement/model/Exam.java
-src/com.exammanagement/utility/InputUtil.java
 .settings
 .springBeans
 .sts4-cache
