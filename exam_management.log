@@ -177,3 +177,7 @@ Feb 25, 2025 3:53:41 PM com.exammanagement.utility.LoggerUtil logError
 SEVERE: Invalid option. Please try again
 Feb 25, 2025 5:46:38 PM com.exammanagement.utility.LoggerUtil logWarning
 WARNING: Exiting Exam Management System...
+Feb 26, 2025 12:03:25 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid input. Please enter a valid value.
+Feb 26, 2025 12:05:36 PM com.exammanagement.utility.LoggerUtil logError
+SEVERE: Invalid input. Please enter a valid number.

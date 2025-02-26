@@ -3,11 +3,15 @@ package com.exammanagement.model;
 import java.util.UUID;
 
 public class Subject {
+
+    //Data fields for department class
     private final String subjectId;
     private String subjectName;
     private Department department;
-    private  int semester;
+    private int semester;
 
+
+    //constructor to initialize the object values
     public Subject(String subjectName, Department department, int semester) {
         this.subjectId = UUID.randomUUID().toString();
         this.subjectName = subjectName;
@@ -15,6 +19,8 @@ public class Subject {
         this.semester = semester;
     }
 
+
+    //Getter and setter of the variable
     public String getSubjectId() {
         return subjectId;
     }
@@ -31,6 +37,10 @@ public class Subject {
         return department;
     }
 
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     public int getSemester() {
         return semester;
     }
@@ -39,10 +49,8 @@ public class Subject {
         this.semester = semester;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 
+    //to print the object with all its values
     @Override
     public String toString() {
         return "Subject{" +

@@ -7,7 +7,6 @@ import com.exammanagement.model.Subject;
 import com.exammanagement.service.ExamService;
 import com.exammanagement.service.implementation.ExamServiceImpl;
 import com.exammanagement.utility.InputUtil;
-import com.exammanagement.utility.LoggerUtil;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +17,7 @@ public class ExamController {
 
     public ExamController() {
         Department department1 = new Department("computer");
-        Subject subject1 = new Subject("digital forensics", department1, 8);
+        Subject subject1 = new Subject("digital forensics", department1, 4);
         String tempDateTime = "2025-01-01 12:40";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime tempDateTime1 = LocalDateTime.parse(tempDateTime, formatter);
@@ -35,7 +34,7 @@ public class ExamController {
             System.out.println("4. View Exam by ID");
             System.out.println("5. View All Exams");
             System.out.println("6. Exit");
-            System.out.print("Choose an option: ");
+            System.out.print("Choose an option:");
 
             int choice = InputUtil.readInt("");
             switch (choice) {
@@ -45,10 +44,10 @@ public class ExamController {
                 case 4 -> viewExamById();
                 case 5 -> viewAllExams();
                 case 6 -> {
-                    LoggerUtil.logWarning("Exiting Exam Management System...");
+                    System.out.println("Exiting Exam Management System...");
                     return;
                 }
-                default -> LoggerUtil.logError("Invalid option. Please try again");
+                default -> System.out.println("Invalid option. Please try again");
             }
         }
     }
@@ -56,7 +55,7 @@ public class ExamController {
     private void viewAllExams() {
         List<Exam> exams = examService.getAllExams();
         if (exams.isEmpty()) {
-            LoggerUtil.logError("No exams available.");
+            System.out.println("No exams available.");
             return;
         }
 
@@ -84,7 +83,7 @@ public class ExamController {
             System.out.println("Subject: " + exam.getSubject().getSubjectName());
 
         } catch (ExamNotFoundException e) {
-            LoggerUtil.logError(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
@@ -94,7 +93,7 @@ public class ExamController {
         if (examService.deleteExam(examId)) {
             System.out.println("Exam deleted successfully!");
         } else {
-            LoggerUtil.logError("Exam not found.");
+            System.out.println("Exam not found.");
         }
     }
 
@@ -112,7 +111,7 @@ public class ExamController {
             String examDepartment = InputUtil.readString("Enter New department", existingdepartment.getDepartmentName());
             if (!examDepartment.isEmpty()) existingdepartment.setDepartmentName(examDepartment);
 
-            int subjectSemester = InputUtil.readInt("Enter New semester", existingExam.getSemester());
+            int subjectSemester = InputUtil.readSemester("Enter New semester", existingExam.getSemester());
             if (subjectSemester > 0) {
                 existingExam.setSemester(subjectSemester);
                 existingSubject.setSemester(subjectSemester);
@@ -124,20 +123,21 @@ public class ExamController {
             int totalMarks = InputUtil.readInt("Enter New Total Marks", existingExam.getTotalMarks());
             if (totalMarks > 0) existingExam.setTotalMarks(totalMarks);
 
-            int passingMarks = InputUtil.readInt("Enter New Passing Marks", existingExam.getPassingMarks());
+            int passingMarks = InputUtil.readPassingMarks("Enter New Passing Marks", existingExam.getTotalMarks(), existingExam.getPassingMarks());
             if (passingMarks > 0) existingExam.setPassingMarks(passingMarks);
 
             LocalDateTime newDateTime = InputUtil.readDateAndTime("Enter New Exam DateTime (YYYY-MM-DD HH:MM)", existingExam.getDateTime().toString());
-            existingExam.setDateTime(newDateTime);
+
 
             int duration = InputUtil.readInt("Enter New Duration", existingExam.getDuration());
             if (duration > 0) existingExam.setDuration(duration);
 
             examService.updateExam(examId, existingExam);
+            System.out.println(existingExam);
             System.out.println("Exam updated successfully!");
 
         } catch (ExamNotFoundException e) {
-            LoggerUtil.logError(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
@@ -148,13 +148,13 @@ public class ExamController {
 
         Department department = new Department(departmentName);
 
-        int semester = InputUtil.readInt("Enter Semester: ");
+        int semester = InputUtil.readSemester("Enter Semester: ");
         String subjectName = InputUtil.readString("Enter Subject Name: ");
 
         Subject subject = new Subject(subjectName, department, semester);
 
         int totalMarks = InputUtil.readInt("Enter Total Marks: ");
-        int passingMarks = InputUtil.readInt("Enter Passing Marks: ");
+        int passingMarks = InputUtil.readPassingMarks("Enter Passing Marks: ", totalMarks);
 
         LocalDateTime dateTime = InputUtil.readDateAndTime("Enter Exam DateTime (YYYY-MM-DD HH:MM): ");
         int duration = InputUtil.readInt("Enter Duration (minutes): ");

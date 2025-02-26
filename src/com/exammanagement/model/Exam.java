@@ -5,6 +5,8 @@ import java.util.UUID;
 import java.util.logging.Logger;
 
 public class Exam {
+
+    //Data fields for department class
     private final String examId;
     private String examName;
     private LocalDateTime dateTime;
@@ -15,6 +17,8 @@ public class Exam {
     private int semester;
     private Subject subject;
 
+
+    //constructor to initialize the object values
     public Exam(String examName, LocalDateTime dateTime, int duration, int totalMarks, int passingMarks, Department department, int semester, Subject subject) {
         this.examId = UUID.randomUUID().toString();
         this.examName = examName;
@@ -27,6 +31,8 @@ public class Exam {
         this.subject = subject;
     }
 
+
+    //Getter and setter of the variable
     public String getExamId() {
         return examId;
     }
@@ -95,6 +101,8 @@ public class Exam {
         this.semester = semester;
     }
 
+
+    //to print the object with all its values
     @Override
     public String toString() {
         return "Exam{" +
