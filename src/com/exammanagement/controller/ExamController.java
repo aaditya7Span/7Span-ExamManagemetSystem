@@ -127,7 +127,7 @@ public class ExamController {
             if (passingMarks > 0) existingExam.setPassingMarks(passingMarks);
 
             LocalDateTime newDateTime = InputUtil.readDateAndTime("Enter New Exam DateTime (YYYY-MM-DD HH:MM)", existingExam.getDateTime().toString());
-
+            existingExam.setDateTime(newDateTime);
 
             int duration = InputUtil.readInt("Enter New Duration", existingExam.getDuration());
             if (duration > 0) existingExam.setDuration(duration);

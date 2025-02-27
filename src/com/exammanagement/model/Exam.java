@@ -2,7 +2,6 @@ package com.exammanagement.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 public class Exam {
 
