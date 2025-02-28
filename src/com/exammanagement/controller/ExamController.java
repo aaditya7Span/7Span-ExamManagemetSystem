@@ -90,10 +90,11 @@ public class ExamController {
     private void deleteExam() {
         String examId = InputUtil.readString("Enter Exam ID to delete: ");
 
-        if (examService.deleteExam(examId)) {
-            System.out.println("Exam deleted successfully!");
-        } else {
-            System.out.println("Exam not found.");
+        try {
+            boolean result = examService.deleteExam(examId);
+            if (result) System.out.println("Exam deleted successfully!");
+        } catch (ExamNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 

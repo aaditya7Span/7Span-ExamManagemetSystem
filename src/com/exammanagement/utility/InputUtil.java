@@ -3,6 +3,7 @@ package com.exammanagement.utility;
 import com.exammanagement.exception.DateTimeParseException;
 
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -37,29 +38,62 @@ public class InputUtil {
 
     public static LocalDateTime readDateAndTime(String roleOfTask, String existingData) {
         while (true) {
-            System.out.print(existingData == null ? roleOfTask : roleOfTask + " (" + existingData + "): ");
+            System.out.print(existingData == null ? roleOfTask : roleOfTask + " (" + existingData + ")");
             String input = scanner.nextLine().trim();
 
+            // If input is empty and existingData is available, return existingData after validation
             if (input.isEmpty() && existingData != null) {
-                return LocalDateTime.parse(existingData, FORMATTER); // Return existing date-time if input is empty
-            }
-
-            Matcher matcher = dateTimePattern.matcher(input);
-            if (!matcher.matches()) {
-                System.out.println("Invalid format. Please enter in 'YYYY-MM-DD HH:MM' format.");
-                continue;
-            }
-
-            try {
-                LocalDateTime dateTime = LocalDateTime.parse(input, FORMATTER);
-                if (dateTime.isBefore(LocalDateTime.now())) {
-                    System.out.println("Invalid date-time! Must be in the present or future.");
-                } else {
-                    return dateTime;
+                try {
+                    return LocalDateTime.parse(existingData, FORMATTER);
+                } catch (DateTimeParseException e) {
+                    System.out.println("Error: Invalid existing date format. Please re-enter.");
                 }
-            } catch (DateTimeParseException e) {
-                System.out.println("Invalid date-time value. Try again.");
+                continue;  // Continue only if existingData is invalid
             }
+
+            // Validate date-time format and values
+            LocalDateTime validDateTime = validateAndParseDateTime(input);
+            if (validDateTime != null) {
+                return validDateTime;
+            }
+        }
+    }
+
+    private static LocalDateTime validateAndParseDateTime(String input) {
+        Matcher matcher = dateTimePattern.matcher(input);
+        if (!matcher.matches()) {
+            System.out.println("Invalid format. Please enter in 'YYYY-MM-DD HH:MM' format.");
+            return null;
+        }
+
+        try {
+            int year = Integer.parseInt(matcher.group(1));
+            int month = Integer.parseInt(matcher.group(2));
+            int day = Integer.parseInt(matcher.group(3));
+            int hour = Integer.parseInt(matcher.group(4));
+            int minute = Integer.parseInt(matcher.group(5));
+
+            // Validate month, day, hour, and minute values
+            if (month < 1 || month > 12 || hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+                System.out.println("Invalid Month, Hour, or Minute Value. Please enter a valid date and time.");
+                return null;
+            }
+
+            int maxDaysInMonth = YearMonth.of(year, month).lengthOfMonth();
+            if (day < 1 || day > maxDaysInMonth) {
+                System.out.println("Invalid day! " + year + "-" + month + " has " + maxDaysInMonth + " days.");
+                return null;
+            }
+            // Parse and validate date-time
+            LocalDateTime dateTime = LocalDateTime.parse(input, FORMATTER);
+            if (dateTime.isBefore(LocalDateTime.now())) {
+                System.out.println("Invalid date-time! Must be in the present or future.");
+                return null;
+            }
+            return dateTime;
+        } catch (NumberFormatException | DateTimeParseException e) {
+            System.out.println("Error: Unable to parse date-time. Please ensure the format is 'YYYY-MM-DD HH:MM'.");
+            return null;
         }
     }
 

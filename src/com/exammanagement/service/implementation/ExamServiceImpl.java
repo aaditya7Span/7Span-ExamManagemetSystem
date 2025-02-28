@@ -39,12 +39,12 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
-    public boolean deleteExam(String examId) {
+    public boolean deleteExam(String examId) throws ExamNotFoundException {
         Exam exam = examMap.remove(examId);
-        if (exam != null) {
-            examList.remove(exam);
-            return true;
+        examList.remove(exam);
+        if (exam == null) {
+            throw new ExamNotFoundException("Exam with ID " + examId + " not found.");
         }
-        return false;
+        return true;
     }
 }
